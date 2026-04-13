@@ -1,0 +1,13 @@
+In the modern knowledge economy, information is created faster than any single human can consume. Teams struggle to make sense of long reports, technical documents, and research summaries. This project demonstrates an ingestion pipeline that treats information as an evolving pyramid rather than a flat index.
+
+A knowledge pyramid begins with raw text, advances through summaries and categories, and ends with distilled signal. The raw layer preserves context and detail. The summary layer condenses key points into human-readable sentences. The category layer groups material into themes like strategy, engineering, and operations. The distilled layer surfaces the keywords and concepts that matter most.
+
+This layered structure supports different types of retrieval. A user who remembers a phrase can match raw text. Someone looking for a concept can search summaries. A team needing a quick theme can query at the category level. And a fast review can rely on distilled keywords.
+
+The sliding window component is designed for long documents. Rather than chopping a full report into isolated pages, the system overlaps text windows so boundaries are softer and important transitions are preserved. This is especially important for content with examples, definitions, and narrative flow.
+
+For real deployment, this pipeline would support streaming ingestion, vector storage, and a search interface. In this prototype, the retrieval mechanism is intentionally simple: it uses token similarity and fuzzy matching to choose the best answer from the four layers.
+
+The system also includes a reasoning-aware adapter. That adapter is a thin routing layer that chooses a response mode based on the question type. It helps the system treat math problems differently from legal reasoning or general knowledge queries.
+
+Finally, the training component demonstrates how a reasoning model can be fine-tuned on GSM8K. It includes dataset loading, tokenization, a LoRA-friendly model build path, a training loop, and exact-match evaluation. The training workflow is written to be clear and extensible rather than optimized for a specific GPU cluster.
